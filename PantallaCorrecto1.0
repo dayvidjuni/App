@@ -1,0 +1,113 @@
+package com.example.cuy.pantallaDuelo
+
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.example.cuy.R
+
+
+@Composable
+fun PantallaCorrecto() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color(0xFFFAD78E))
+            .padding(start = 20.dp, end = 20.dp, bottom = 20.dp, top = 30.dp)
+    ) {
+        // Fila superior: botón atrás, espacio, íconos derecha
+        Row(
+            modifier = Modifier
+                .fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            // Botón atrás
+            Image(
+                painter = painterResource(id = R.drawable.boton_atras),
+                contentDescription = "Atrás",
+                modifier = Modifier
+                    .height(50.dp)
+                    .width(50.dp)
+            )
+
+            // Íconos configuración y casa
+            Row(
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.configuracion),
+                    contentDescription = "Configuración",
+                    modifier = Modifier
+                        .height(50.dp)
+                        .width(50.dp)
+                        .padding(end = 12.dp)
+                )
+                Image(
+                    painter = painterResource(id = R.drawable.casa),
+                    contentDescription = "Inicio",
+                    modifier = Modifier
+                        .height(32.dp)
+                        .width(32.dp)
+                )
+            }
+        }
+
+        // Logo
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .offset(y = (-50).dp), // mismo offset que usaste
+            contentAlignment = Alignment.TopCenter
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.logo_cuy),
+                contentDescription = "Logo del Cuy",
+                modifier = Modifier
+                    .height(170.dp)
+                    .width(170.dp)
+            )
+        }
+
+        //Spacer(modifier = Modifier.height(20.dp))
+
+        // Imagen del cuy correcto
+        Box(
+            modifier = Modifier.fillMaxWidth(),
+            contentAlignment = Alignment.Center
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.cuy_correcto),
+                contentDescription = "Cuy Correcto",
+                modifier = Modifier
+                    .height(400.dp) // ajusta según tu imagen
+                    .width(400.dp)
+            )
+        }
+
+        Spacer(modifier = Modifier.height(50.dp))
+
+        // Texto ¡CORRECTO!
+        Text(
+            text = "¡CORRECTO!",
+            fontSize = 32.sp,
+            fontWeight = FontWeight.Bold, // ← Esto aplica la negrita
+            fontFamily = OxaniumFont,
+            color = Color(0xFF7A3E3E),
+            textAlign = TextAlign.Center,
+            modifier = Modifier.fillMaxWidth()
+        )
+    }
+}
